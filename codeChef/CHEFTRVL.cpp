@@ -13,7 +13,7 @@ public:
     void addEdge(int source, int destination);
     bool BFS(int start, int dest, int pred[], int dist[]);
     void printList(list<int> li);
-    int  shortestPath(int start, int destination);
+     int  shortestPath(int start, int destination);
     void DFS(int start);
     void DFSstep(int node, bool *visited,int level);
     void enterAges();
