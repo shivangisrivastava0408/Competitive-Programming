@@ -20,28 +20,24 @@
 using namespace std;
 
 int main(){
-    int n;
+    M<ull,ull> m;
+    ull n;
     cin >> n;
-    pair<ull,ull> *p = new pair<ull,ull>[n];
-    priority_queue<P<ull,ull>, V<P<ull,ull> >, greater<P<ull,ull > > q;
-    for(ull i = 0,a ; i < n; ++i){
+    for(ull i = 1,a; i <= n; ++i){
         cin >> a;
-        p[i] = make_pair(a,1);
+        m.insert(mp(a,i));
     }
-    for(ull i = 0,a ; i < n; ++i){
+    ull q;
+    cin >> q;
+    ull ans1 = 0;
+    ull ans2 = 0;
+    while(q--){
+        ull a;
         cin >> a;
-        p[i].second = a;
+        ull i = m.find(a)->second;
+        ans1 += i; 
+        ans2 += n-i+1 ;
     }
-    V<P<ull,ull> > v[n];
-    for(int i = 0; i < n; ++i){
-        for(int j = i+1; j < n; ++j){
-            if(p[j].first > p[i].first){
-                v[i].pb(mp(i,j));
-            }
-        }
-    }
-    ull MIN = INT_MAX;
-    if(MIN == INT_MAX)cout << "-1";
-    else cout << MIN;
-return 0;
+    cout << ans1 << " " << ans2;
+    return 0;
 }

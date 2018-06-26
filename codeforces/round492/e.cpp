@@ -19,29 +19,33 @@
 
 using namespace std;
 
+ll dis(ll x1,ll y1){
+    return sqrt((x1*x1)+(y1*y1));
+}
+
 int main(){
-    int n;
+    ll n,xsum =0,ysum=0;
     cin >> n;
-    pair<ull,ull> *p = new pair<ull,ull>[n];
-    priority_queue<P<ull,ull>, V<P<ull,ull> >, greater<P<ull,ull > > q;
-    for(ull i = 0,a ; i < n; ++i){
-        cin >> a;
-        p[i] = make_pair(a,1);
-    }
-    for(ull i = 0,a ; i < n; ++i){
-        cin >> a;
-        p[i].second = a;
-    }
-    V<P<ull,ull> > v[n];
+    int *c = new int[n];
     for(int i = 0; i < n; ++i){
-        for(int j = i+1; j < n; ++j){
-            if(p[j].first > p[i].first){
-                v[i].pb(mp(i,j));
-            }
+        ll x,y;
+        cin >> x >> y;
+        ll rx1 = xsum+x;
+        ll ry1 = ysum+y;
+        ll rx2 = xsum-x;
+        ll ry2 = ysum-y;
+        if(dis(rx1,ry1) > dis(rx2,ry2)){
+            c[i] = -1;
+            xsum = rx2;
+            ysum = ry2;
+        }else{
+            c[i] = 1;
+            xsum = rx1;
+            ysum = ry1;
         }
     }
-    ull MIN = INT_MAX;
-    if(MIN == INT_MAX)cout << "-1";
-    else cout << MIN;
-return 0;
+    for(int i = 0; i < n; ++i){
+        cout << c[i] << " ";
+    }
+    return 0;
 }

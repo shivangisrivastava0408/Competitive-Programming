@@ -22,26 +22,19 @@ using namespace std;
 int main(){
     int n;
     cin >> n;
-    pair<ull,ull> *p = new pair<ull,ull>[n];
-    priority_queue<P<ull,ull>, V<P<ull,ull> >, greater<P<ull,ull > > q;
-    for(ull i = 0,a ; i < n; ++i){
+    MS<int> s;
+    int sum = 0;
+    for(int i =0,a; i < n; ++i){
         cin >> a;
-        p[i] = make_pair(a,1);
+        sum+=a;
+        s.insert(a);
     }
-    for(ull i = 0,a ; i < n; ++i){
-        cin >> a;
-        p[i].second = a;
+    float avg = float(sum)/float(n);
+    int c = 0;
+    for(MS<int>::IT itr = s.begin(); itr != s.end() && avg < 4.5; ++itr){
+        avg+=(float(5-*itr)/float(n));
+        c++;
     }
-    V<P<ull,ull> > v[n];
-    for(int i = 0; i < n; ++i){
-        for(int j = i+1; j < n; ++j){
-            if(p[j].first > p[i].first){
-                v[i].pb(mp(i,j));
-            }
-        }
-    }
-    ull MIN = INT_MAX;
-    if(MIN == INT_MAX)cout << "-1";
-    else cout << MIN;
-return 0;
+    cout << c;
+    return 0;
 }
