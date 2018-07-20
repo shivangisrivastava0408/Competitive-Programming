@@ -18,30 +18,40 @@
 #define FAST ios_base::sync_with_stdio(false);cin.tie();cout.tie();
 
 using namespace std;
-
+const int N = 3030;
+ll arr[N][2];
+ll ans = LLONG_MAX;
 int main(){
     int n;
     cin >> n;
-    pair<ull,ull> *p = new pair<ull,ull>[n];
-    priority_queue<P<ull,ull>, V<P<ull,ull> >, greater<P<ull,ull > > q;
-    for(ull i = 0,a ; i < n; ++i){
-        cin >> a;
-        p[i] = make_pair(a,1);
-    }
-    for(ull i = 0,a ; i < n; ++i){
-        cin >> a;
-        p[i].second = a;
-    }
-    V<P<ull,ull> > v[n];
-    for(int i = 0; i < n; ++i){
-        for(int j = i+1; j < n; ++j){
-            if(p[j].first > p[i].first){
-                v[i].pb(mp(i,j));
-            }
+    for(int i = 0; i < 2; ++i){
+        for(int j = 0; j < n; ++j){
+            cin >> arr[j][i];
         }
     }
-    ull MIN = INT_MAX;
-    if(MIN == INT_MAX)cout << "-1";
-    else cout << MIN;
+    for(int i = 0; i < n; ++i){
+        ll b = -1;
+        ll cost = arr[i][1];
+        for(int j = 0; j < i; ++j){
+            if(arr[j][0] >= arr[i][0])continue;
+            if(b == -1 || arr[b][1] > arr[j][1]){
+                b = j;
+            }
+        }
+        if(b == -1)continue;
+        cost+=arr[b][1];
+        b = -1;
+        for(int j = i+1; j < n; ++j){
+            if(arr[j][0] <= arr[i][0])continue;
+            if(b == -1 || arr[b][1] > arr[j][1]){
+                b = j;
+            }
+        }
+        if(b == -1)continue;
+        cost+=arr[b][1];
+        ans = min(ans,cost);        
+    }
+    if(ans == LLONG_MAX)cout << "-1";
+    else cout << ans;
 return 0;
 }
