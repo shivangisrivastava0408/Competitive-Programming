@@ -43,6 +43,48 @@ ll dp[1010][1010];
 int arr[1010][1010];
 // bool visited[1010][1010];
 int n,m;
+// ull cal(int i, int j){
+//     visited[i][j] = true;
+//     if(dp[i][j] > -1)return dp[i][j];
+//     ull a,b,c,d;
+//     if(arr[i][j] == 1){dp[i][j] = 0;return 0;}
+//     if(i+1 <= n && arr[i+1][j] == 1){
+//         dp[i][j] = 1;
+//         return 1;
+//     }
+//     if(i-1 > 0 && arr[i-1][j] == 1){
+//         dp[i][j] = 1;
+//         return 1;
+//     }
+//     if(j+1 <= m && arr[i][j+1] == 1){
+//         dp[i][j] = 1;
+//         return 1;
+//     }
+//     if(j-1 > 0 && arr[i][j-1] == 1){
+//         dp[i][j] = 1;
+//         return 1;
+//     }
+
+//     a =  LLONG_MAX;
+//     b =  LLONG_MAX;
+//     c =  LLONG_MAX;
+//     d =  LLONG_MAX;
+//     if(i+1 <= n && !visited[i+1][j]){
+//         a = cal(i+1,j);
+//     }
+//     if(i-1 > 0 && !visited[i-1][j]){
+//         b = cal(i-1,j);
+//     }
+//     if(j+1 <= m && !visited[i][j+1]){
+//         c = cal(i,j+1);
+//         // return 1;
+//     }
+//     if(j-1 > 0 && !visited[i][j-1]){
+//         d = cal(i,j-1);
+//         // return 1;
+//     }
+//     dp[i][j] = min(a,min(b,min(c,d)));
+// }
 void solve(){
     bool pos = false;
     V<P<ll,ll> > z,o;
