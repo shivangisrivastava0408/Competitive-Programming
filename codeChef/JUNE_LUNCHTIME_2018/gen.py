@@ -16,7 +16,7 @@ def writeNumber(number, file):
 def getString(arr,length):
     S = ""
     i = 0
-    while i < len(arr):
+    while i < length:
         S = S + arr[random.randint(0,len(arr)-1)]
         i = i + 1
     return S
@@ -38,9 +38,16 @@ while i < 10:
     digits.append(str(i))
     i = i + 1
 fopen = open('input.txt','w')
-n = getNumber(1,2000)
-writeNumber(n,fopen)
-for i in range(n):
-    arr = getArray(2,1,15)
+t = getNumber(1,2000)
+writeNumber(t,fopen)
+for i in range(t):
+    n = getNumber(1,20)
+    # arr = getArray(n,1,5)
+    k = getNumber(1,n)
+    arr = []
+    arr.append(n)
+    arr.append(k)
+    # arr = getArray(n,1,5)
+    # writeNumber(k,fopen)
     writeArray(arr,fopen)
-# writeString(getString(smallLetters,15),fopen)
+    writeString(getString(smallLetters,n),fopen)

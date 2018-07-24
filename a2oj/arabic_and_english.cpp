@@ -21,63 +21,59 @@
 #define PUU pair<unsigned long long int, unsigned long long int>
 #define L list
 #define V vector
-#define S set
+#define D deque
+#define ST set
 #define MS multiset
 #define M map
+#define UM unordered_map
 #define mp make_pair
 #define pb push_back
+#define pf push_front
 #define MM multimap
+#define F first
+#define S second
 #define IT iterator
 #define RIT reverse_iterator
 #define FAST ios_base::sync_with_stdio(false);cin.tie();cout.tie();
 #define FILE_READ freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
-
+#define MAXN 25
 using namespace std;
 
 void solve(){
-    int n,k;
-    cin >> n >> k;
-    string a;
-    cin >> a;
-    int *arr = new int[a.length()];
-    arr[0] = 0;
-    for(int i = 1; i < a.length(); ++i){
-        if(a[i] == a[i-1])arr[i] = 0;
-        else arr[i]=1;
+    int n;
+    int e = -1;
+    cin >> n;
+    V<string> v;
+    for(int i = 0 ; i < n; ++i){
+        string a;
+        cin >> a;
+        if(a[0]!='#'){
+            e = i;
+        }
+        v.pb(a);
     }
-    if(2*k < n+1){
-        ll ans = 0;
-        for(int i = 0; i < k; ++i){
-            // cout << a[i] << " arr[" << i << "] = " << arr[i]  << " i = " << i << endl;
-            ans+=(arr[i]*i);
+    if(e == -1){
+        for(int i = 0; i < v.size(); ++i){
+            cout << v[i] << " ";
         }
-        for(int i = n-1, l = 1; l <= k; --i,++l){
-            // cout << a[i] << " arr[" << i << "] = " << arr[i] << " l = " << l << endl;
-            ans+=(l*arr[i]);
-        }
-        for(int i = k; i < n-k; ++i){
-            // cout << a[i] << " arr[" << i << "] = " << arr[i] << " k = " << k << endl;
-            ans+=(k*arr[i]);
-        }
-        cout << ans << endl;
+        cout << endl;
         return ;
-    }else{
-        // cout << "OVERLAPPING SITUATION\n";
-        int q = n-k;
-        ll ans = 0;
-        for(int i = 0; i < n; ++i){
-            int j = min(i,q);
-            j = min(j,n-i);
-            // cout << a[i] << " arr[" << i << "] = " << arr[i] << " j = " << j << endl;
-            ans+=(j*arr[i]);
-        }
-        cout << ans << endl;
     }
+    for(int i = e+1; i < v.size(); ++i){
+        cout << v[i] << " ";
+    }
+    cout << v[e] << " ";
+    for(int i = 0; i < e; ++i){
+        cout << v[i] << " ";
+    }
+    cout << endl;
 }
+
 int main(){
-    // FILE_READ
     int t;
     cin >> t;
-    while(t--)solve();
+    while(t--){
+        solve();
+    }
     return 0;
 }

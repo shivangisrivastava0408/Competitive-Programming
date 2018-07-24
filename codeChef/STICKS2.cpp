@@ -76,6 +76,7 @@ void solve(){
             doub[d_ind[a]].second++;
         }
     }
+    for(int i = 0 ; i < doub.size(); ++i)doub[i].second--;
     // for(int i = 0; i < arr.size(); ++i){
     //     cout << "( " << arr[i].first << ", " << arr[i].second << "), "; 
     // }
@@ -97,14 +98,14 @@ void solve(){
             a = doub[i].first;
             b = doub[i].first;
         }if(k-p == 1){
-            a = doub[i-1].first;
+            a = doub[i+1].first;
             b = doub[i].first;
         }if(k-p == 2){
             a = doub[i+1].first;
             b = doub[i].first;
         }if(k-p == 3){
             a = doub[i+1].first;
-            b = doub[i].first;
+            b = doub[i+1].first;
         }
         if(a!=-1 && b!=-1)break;
         ++i;
