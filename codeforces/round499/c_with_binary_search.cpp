@@ -39,15 +39,35 @@
 #define MAXN 25
 using namespace std;
 
-struct node{
-    string t;
-    int l,r;
-};
-
 int main(){
-    int n;
-    cin >> n;
-    struct node *g = new struct node[n+1];
-    for(int i = 1; i < n; ++i)
+    M<int,int> MAP;
+    int n,m;
+    cin >> n >> m;
+    for(int i = 0; i < m; ++i){
+        int a;
+        cin >> a;
+        MAP[a]++;
+    }
+    int ans = 0;
+    int low = 0;
+    int high = m;
+    while(low <= high && high > 0){
+        int mid = (low + high)/2;
+        if(mid == 0){
+            mid = 1;
+        }
+        int people_fed = 0;
+        for(M<int,int>::IT it = MAP.begin(); it != MAP.end(); ++it){
+            people_fed += (it->second / mid);
+        }
+        if(people_fed >= n){
+            low = mid+1;
+            ans = max(ans,mid); 
+        }else{
+            high = mid-1;
+        }
+        // if(mid == 1)break;
+    }
+    cout << ans;
     return 0;
 }
