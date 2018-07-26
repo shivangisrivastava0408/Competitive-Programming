@@ -40,13 +40,28 @@
 using namespace std;
 
 int main(){
-    ll n,m;
-    cin >> n >> m;
-    ll *arr = new ll[n+1];
-    for(int i = 0; i < n; ++i)cin >> arr[i];
-    arr[n] = m;
-    ll sum = 0;
+    M<int,int> m;
+    int n,k;
+    cin >> n >> k;
+    for(int i = 0; i < k; ++i){
+        int a;
+        cin >> a;
+        if(m.count(a) == 0){
+            m.insert(mp(a,1));
+        }else{
+            m.find(a)->second++;
+        }
+    }
+    int j = 1;
+    while(1){
+        int ans = 0;
+        for(M<int,int>::IT it = m.begin(); it != m.end(); ++it){
+            ans+=(it->second/j);
+        }
+        if(ans < n)break;
+        j++;
+    }
+    cout << j-1;
     
-    cout << sum;
     return 0;
 }

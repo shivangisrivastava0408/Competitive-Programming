@@ -38,15 +38,26 @@
 #define FILE_READ freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define MAXN 25
 using namespace std;
+ll dp[9];
+
 
 int main(){
-    ll n,m;
-    cin >> n >> m;
-    ll *arr = new ll[n+1];
-    for(int i = 0; i < n; ++i)cin >> arr[i];
-    arr[n] = m;
-    ll sum = 0;
-    
-    cout << sum;
+    dp[0] = 1;
+    dp[1] = 1;
+    dp[2] = 2;
+    V<ll> v;
+    for(int i = 3; i < 10; ++i)dp[i]=i*dp[i-1];
+    for(ll i = 10; i < 10000000; ++i){
+        ll sum = 0;
+        ll n = i;
+        while(n){
+            sum+=dp[n%10];
+            n/=10;
+        }
+        if(sum == i)v.pb(i);
+    }
+    ll ans = 0;
+    for(int i = 0; i < v.size(); ++i){cout << v[i] << " ";ans+=v[i];}
+    cout << endl << ans << endl;
     return 0;
 }

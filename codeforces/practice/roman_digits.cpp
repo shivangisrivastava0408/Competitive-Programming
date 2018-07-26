@@ -39,15 +39,31 @@
 #define MAXN 25
 using namespace std;
 ull dp[10];
+int *arr;
+ST<ll> ans;
+ll solve(int n){
+    for(ll j = 1; j <= n; ++j){
+        ST<ll> tmp;
+        for(ST<ll>::IT it = ans.begin(); it != ans.end(); ++it){
+            for(int i = 0; i < 4; ++i){
+                tmp.insert(arr[i] + *it);
+            }
+        }
+        ans.clear();
+        ans = tmp;
+    }
+    cout << ans.size();
+}
 int main(){
-    dp[0] = 0;
-    dp[1] = 4;
-    dp[2] = 10;
-    dp[3] = dp[2]*4;
-    dp[4] = dp[3]*5;
-    dp[4]/=2;
-    ull n;
+    // FILE_READ
+    arr = new int[4];
+    arr[0] = 1;
+    arr[1] = 5;
+    arr[2] = 10;
+    arr[3] = 50;
+    ans.insert(0);
+    ll n;
     cin >> n;
-    cout << (n/5 * (dp[4])) + dp[n%5];
+    solve(n);
     return 0;
 }

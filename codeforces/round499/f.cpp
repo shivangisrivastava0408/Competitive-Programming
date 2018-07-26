@@ -39,14 +39,14 @@
 #define MAXN 25
 using namespace std;
 
+struct node{
+    string t;
+    int l,r;
+};
+
 int main(){
-    ll n,m;
-    cin >> n >> m;
-    ll *arr = new ll[n+1];
-    for(int i = 0; i < n; ++i)cin >> arr[i];
-    arr[n] = m;
-    ll sum = 0;
-    
-    cout << sum;
+    int n;
+    cin >> n;
+    struct node *g = new struct node[n+1];
     return 0;
 }

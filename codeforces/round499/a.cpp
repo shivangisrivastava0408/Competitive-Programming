@@ -40,13 +40,28 @@
 using namespace std;
 
 int main(){
-    ll n,m;
-    cin >> n >> m;
-    ll *arr = new ll[n+1];
-    for(int i = 0; i < n; ++i)cin >> arr[i];
-    arr[n] = m;
-    ll sum = 0;
-    
-    cout << sum;
+    int n,k;
+    cin >> n >> k;
+    int j = 1;
+    string a;
+    cin >> a;
+    sort(a.begin(),a.end());
+    int ans = a[0]-'a'+1;
+    string b = "";
+    b+=a[0];
+    for(int i = 1; i < n; i++){
+        if(b.length() == k)break;
+        // cout << *b.rbegin();
+        if(a[i] <= *b.rbegin() +1 )continue;
+        b+=a[i];
+        ans+=(a[i]-'a'+1);
+        ++j;
+    }
+    if(b.length() != k){
+        cout << "-1";
+    }else{
+        cout << ans;
+        // cout << endl << b;
+    }
     return 0;
 }

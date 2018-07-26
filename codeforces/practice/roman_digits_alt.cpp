@@ -38,15 +38,37 @@
 #define FILE_READ freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define MAXN 25
 using namespace std;
-
+// ull dp[10];
+// int *arr;
+// ST<ll> ans;
+// ll solve(int n){
+//     for(int j = 1; j <= n; ++j){
+//         ST<ll> tmp;
+//         for(ST<ll>::IT it = ans.begin(); it != ans.end(); ++it){
+//             for(int i = 0; i < 4; ++i){
+//                 tmp.insert(arr[i] + *it);
+//             }
+//         }
+//         ans.clear();
+//         ans = tmp;
+//         // for(ST<ll>::IT it = ans.begin(); it != ans.end(); ++it)cout << *it << " ";
+//         // cout << endl;
+//         // cout << j << " : " << ans.size()  << " " << ans.size() + 49 << endl;
+//         cout << ans.size() << ",";
+//     }
+// }
 int main(){
-    ll n,m;
-    cin >> n >> m;
-    ll *arr = new ll[n+1];
-    for(int i = 0; i < n; ++i)cin >> arr[i];
-    arr[n] = m;
-    ll sum = 0;
-    
-    cout << sum;
+    // FILE_READ
+    ll arr[] = {0,4,10,20,35,56,83,116,155,198,244,292,341};
+    ll n;
+    cin >> n;
+    if(n < 12)cout << arr[n];
+    else{
+        ll k = n-12;
+        ll p = ((k*49)%LLONG_MAX + arr[12]%LLONG_MAX)%LLONG_MAX;
+        cout << p;
+    }
+    // ans.insert(0);
+    // solve(12);
     return 0;
 }
