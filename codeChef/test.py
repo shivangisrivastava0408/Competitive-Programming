@@ -38,17 +38,17 @@ while i < 10:
     digits.append(str(i))
     i = i + 1
 fopen = open('input.txt','w')
-n = getNumber(1,2000)
+n = getNumber(1,1000000)
 writeNumber(n,fopen)
-m = getNumber(1,2000)
-writeNumber(m,fopen)
-for i in range(m):
-    a = getNumber(1,n)
-    b = getNumber(a,n)
-    fopen.write(str(a) + " " + str(b) + "\n")
-m = getNumber(1,2000)
-writeNumber(m,fopen)
-for i in range(m):
-    n = getNumber(1,2*n)
-    writeNumber(n,fopen)
+last = 0
+for i in range(n):
+    a = getNumber(1,2)
+    if a == 1 or last == 2:
+        arr = [1]
+        arr.append(getNumber(1,1000000))
+        writeArray(arr,fopen)
+        last = 1
+    else:
+        last = 2
+        writeNumber(a,fopen)
 # writeString(getString(smallLetters,15),fopen)

@@ -40,6 +40,21 @@
 using namespace std;
 
 int main(){
-
+    int n,k;
+    cin >> n >> k;
+    ull g = 0;
+    ull t = 10;
+    loop(i,0,n){
+        cin >> t;
+        g = __gcd(g,t);
+    }
+    set<ll> ans;
+    for(ll i = 0, s = 0; i < k; ++i,s+=g){
+        ans.insert(s%k);
+    }
+    cout << ans.size() << endl;
+    for(auto s: ans){
+        cout << s << " ";
+    }
     return 0;
 }

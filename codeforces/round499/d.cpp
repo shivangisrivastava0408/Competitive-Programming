@@ -39,7 +39,46 @@
 #define MAXN 25
 using namespace std;
 
-int main(){
+int query(ll y)
+{
+    cout<<y<<"\n";
+    fflush(stdout);
+    int t;
+    cin>>t;
+    if(t==0||t==-2)
+        exit(0);
+    return t;
+}
 
+int main(){
+    ll m;
+    int n,input;
+    cin >> m >> n;
+    int *p = new int[n];
+    for(int i = 0; i < n; ++i){
+        input = query(1LL * 1);
+        if(input == 0){
+            return 0;
+        }
+        if(input == 1){
+            p[i] = 1;
+        }else{
+            p[i] = -1;
+        }
+    }
+    int i = 0;
+    ll high = m;
+    ll low = 1;
+    while(low <= high){
+        ll mid = (low+high)/2;
+        input = query(mid);
+        input*=p[i%n];
+        if(input == 1){
+            low = mid+1;
+        }else{
+            high = mid-1;
+        }
+        ++i;
+    }
     return 0;
 }

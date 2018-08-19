@@ -44,7 +44,7 @@ int BS(V<int> arr,int val){
 
 int main(){
     V<int> f[MAX];
-    for(int i = 1; i <= MAX; ++i)for(int j = 1; i*j <= MAX; ++j){f[i*j].insert(i);f[i*j].insert(j);}
+    for(int i = 1; i <= MAX; ++i)for(int j = 1; i*j <= MAX; ++j){f[i*j].pb(i);}
     int t;
     cin >> t;
     while(t--){
