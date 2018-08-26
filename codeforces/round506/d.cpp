@@ -88,12 +88,8 @@ int main(){
         a = arr[i];
         int o = 1;
         for(ll j = 10; j < 100000000000; j*=10){
-            if(m[o].count(((a%k)*(j%k))%k) == 0){
-                m[o].insert(mp(((a%k)*(j%k))%k,1));
-            }else{
-                m[o].find(((a%k)*(j%k))%k)->second++;
-            }
-            // m[o][((a%k)*(j%k))%k]++;
+            a = (a*10)%k;
+            m[o][a]++;
             o++;
         }
     }
@@ -109,9 +105,8 @@ int main(){
         ll p = a%k;
         if(p != 0)p = k - p;
         // ans+=(m[cnt][p]);
-        if(m[cnt].count(p) != 0){
-            ans+=m[cnt].find(p)->second;
-        }
+        auto it = m[cnt].find(p);
+        if(it!=m[cnt].end())ans+=it->second;
         ll j = 1;
         for(int po = 0; po < cnt; ++po)j*=10;
         if(((a%k)*(j%k))%k == p)ans--;
