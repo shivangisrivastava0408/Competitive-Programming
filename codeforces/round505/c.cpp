@@ -39,24 +39,41 @@
 #define MAXN 25
 using namespace std;
 int main(){
-    int f[26] = {0};
-    int n;
-    cin >> n;
-    int c = 0;
+    FAST
     string a;
     cin >> a;
-    for(int i = 0; i < a.length(); ++i)f[a[i]-'a']++;
-    if(n == 1){
-        cout << "Yes";
-        return 0;
+    int n = a.length();
+    int i = 0;
+    int ans = 0;
+    string two_prev = a;
+    while((a[0] == 'b' && a[n-1] == 'w') || (a[0] == 'w' && a[n-1] == 'b')){
+        // cout << "HE\n";
+        string prev_string = a;
+        for(i = 0; i+1 < n; ++i){
+            if((a[i] == 'b' && a[i+1] == 'w') || (a[i] == 'w' && a[i+1] == 'b'))continue;
+            else{
+                ++i;
+                break;
+            }
+        }
+        // cout << i << endl;
+        if(i!=0)reverse(a.begin(),a.begin()+i);
+        if(i!=0)reverse(a.begin()+i,a.end());
+        if(a == prev_string || a == two_prev)break;
+        two_prev = prev_string;
     }
-    for(int i = 0; i < 26; ++i){
-        if(f[i] == 0)continue;
-        if(f[i] > 1){
-            cout << "Yes";
-            return 0;
+    // cout << a << endl;
+    // cout << n << endl;
+    int c = 1;
+    for(i = 0; i < n-1; ++i){
+            // cout << "H\n";
+        if((a[i] == 'b' && a[i+1] == 'w') || (a[i] == 'w' && a[i+1] == 'b'))c++;
+        else{
+            ans = max(c,ans);
+            c = 1;
         }
     }
-    cout << "No";
+    ans = max(ans,c);
+    cout << ans;
     return 0;
 }

@@ -38,25 +38,47 @@
 #define FILE_READ freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define MAXN 25
 using namespace std;
-int main(){
-    int f[26] = {0};
-    int n;
-    cin >> n;
-    int c = 0;
-    string a;
-    cin >> a;
-    for(int i = 0; i < a.length(); ++i)f[a[i]-'a']++;
-    if(n == 1){
-        cout << "Yes";
-        return 0;
+
+void solve(){
+    ll n,k,x;
+    cin >> n >> k >> x;
+    ll mn = LLONG_MAX;
+    ll *arr = new ll[k+1];
+    map<ll,int> m;
+    loop(i,1,k+1){
+        cin >> arr[i];
+        mn = min(arr[i],mn);
+        m[arr[i]]++;
     }
-    for(int i = 0; i < 26; ++i){
-        if(f[i] == 0)continue;
-        if(f[i] > 1){
-            cout << "Yes";
-            return 0;
+    ll max_term = mn+x;
+    if(max_term >= 1000000000)max_term = 1000000000;
+    ll max_sum = ((max_term)*(max_term+1))/2;
+    // cout << max_sum << endl;
+    ll min_term = ((mn+x)-(n-k));
+    ll min_sum = ((min_term)*(min_term+1))/2;
+    // cout << min_sum << endl;
+    ll sum = max_sum-min_sum;
+    // cout << sum << endl;
+    min_term++;
+    // cout << min_term << endl;
+    sort(arr+1,arr+k+1);
+    for(int i = k; i > 0; --i){
+        // cout << arr[i] << "   ";
+        if(arr[i] >= min_term){
+            while(m[min_term]!=0)min_term--;
+            sum+=min_term;
+            // cout << sum << " " << min_term << endl;
+        }else{
+            sum+=arr[i];
+            // cout << sum << " " << min_term << endl;
         }
     }
-    cout << "No";
+    cout << sum << "\n";
+}
+
+int main(){
+    int t = 1;
+    cin >> t;
+    while(t--)solve();
     return 0;
 }

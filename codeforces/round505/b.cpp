@@ -36,27 +36,42 @@
 #define RIT reverse_iterator
 #define FAST ios_base::sync_with_stdio(false);cin.tie();cout.tie();
 #define FILE_READ freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
-#define MAXN 25
 using namespace std;
+const ll maxn = 2e5;
+ll a[maxn],b[maxn];
 int main(){
-    int f[26] = {0};
+    FAST
+    ll i;
     int n;
     cin >> n;
-    int c = 0;
-    string a;
-    cin >> a;
-    for(int i = 0; i < a.length(); ++i)f[a[i]-'a']++;
-    if(n == 1){
-        cout << "Yes";
-        return 0;
+    for(i = 0; i < n; ++i)cin >> a[i] >> b[i];
+    set<ll> s;
+    for(int i = 2; i <= 1000000; ++i){
+        if(a[0]%i == 0 && a[0]){
+            s.insert(i);
+            while(a[0] && a[0]%i == 0)a[0]/=i;
+        }
+        if(b[0]%i == 0 && b[0]){
+            s.insert(i);
+            while(b[0] && b[0]%i == 0)b[0]/=i;
+        }
     }
-    for(int i = 0; i < 26; ++i){
-        if(f[i] == 0)continue;
-        if(f[i] > 1){
-            cout << "Yes";
+    if(a[0] > 1)s.insert(a[0]);
+    if(b[0] > 1)s.insert(b[0]);
+    for(set<ll>::iterator itr = s.begin(); itr != s.end(); ++itr){
+        ll no = *itr;
+        int ok = 1;
+        for(int i = 1; i < n; ++i){
+            if(a[i]%no != 0 && b[i]%no != 0){
+                ok = 0;
+                break;
+            }
+        }
+        if(ok){
+            cout << *itr;
             return 0;
         }
     }
-    cout << "No";
+    cout << "-1";
     return 0;
 }

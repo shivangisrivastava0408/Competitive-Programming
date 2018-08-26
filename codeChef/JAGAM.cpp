@@ -38,25 +38,30 @@
 #define FILE_READ freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define MAXN 25
 using namespace std;
-int main(){
-    int f[26] = {0};
+
+ll abs(ll a){
+    if(a < 0)a*=-1;
+    return a;
+}
+
+void solve(){
     int n;
-    cin >> n;
-    int c = 0;
-    string a;
-    cin >> a;
-    for(int i = 0; i < a.length(); ++i)f[a[i]-'a']++;
-    if(n == 1){
-        cout << "Yes";
-        return 0;
-    }
-    for(int i = 0; i < 26; ++i){
-        if(f[i] == 0)continue;
-        if(f[i] > 1){
-            cout << "Yes";
-            return 0;
-        }
-    }
-    cout << "No";
+    ll z1,z2;
+    unordered_map<ll,int> m;
+    V<ll> v;
+    cin >> n >> z1 >> z2;
+    ll *arr = new ll[n];
+    loop(i,0,n){cin >> arr[i];m[arr[i]]++;if(arr[i])m[-1*arr[i]]++;v.pb(abs(arr[i]));}
+    sort(v.begin(),v.end());
+    
+    ll S = 0;
+    
+    
+}
+
+int main(){
+    int t = 1;
+    cin >> t;
+    while(t--)solve();
     return 0;
 }

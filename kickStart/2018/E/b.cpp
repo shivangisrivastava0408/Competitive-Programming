@@ -38,25 +38,62 @@
 #define FILE_READ freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define MAXN 25
 using namespace std;
+
+int abs(int a){
+    if(a < 0)a*=-1;
+    return a;
+}
+
+bool comp(PII a, PII b){
+    if(a.second < b.second)return true;
+    return false; 
+}
+
 int main(){
-    int f[26] = {0};
-    int n;
-    cin >> n;
-    int c = 0;
-    string a;
-    cin >> a;
-    for(int i = 0; i < a.length(); ++i)f[a[i]-'a']++;
-    if(n == 1){
-        cout << "Yes";
-        return 0;
+    int n,m,p;
+    PII *d = new PII[p];
+    cin >> n >> m >> p;
+    V<string> arr;
+    for(int i = 0; i < n; ++i){
+        string a;
+        cin >> a;
+        arr.pb(a);
     }
-    for(int i = 0; i < 26; ++i){
-        if(f[i] == 0)continue;
-        if(f[i] > 1){
-            cout << "Yes";
-            return 0;
+    int *one = new int[n];
+    int *zero = new int[n];
+    for(int i = 0; i < p; ++i){
+        one[i] = 0;
+        zero[i] = 0;
+        for(int j = 0; j < n; ++j){
+            if(arr[j][i]=='1')one[i]++;
+            if(arr[j][i]=='0')zero[i]++;
         }
     }
-    cout << "No";
+    V<string> f;
+    for(int i = 0; i < m; ++i){
+        string a;
+        cin >> a;
+        f.pb(a);
+    }
+    string ans = "";
+    for(int i = 0; i < p; ++i){
+        ans[i]+=((one[i]>zero[i])?"1":"0");
+        d[i] = mp(i,abs(one[i]-zero[i]));
+    }
+    sort(d,d+p,comp);
+    int l =0;
+    bool found = true;
+    while(found){
+        found = false;
+        for(int i = 0; i < m; ++i){
+            if(ans == f[i]){
+                found = true;
+                break;
+            }
+        } 
+        if(found){
+            ans[d[]]
+        }
+    }
     return 0;
 }

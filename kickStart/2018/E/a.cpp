@@ -39,24 +39,28 @@
 #define MAXN 25
 using namespace std;
 int main(){
-    int f[26] = {0};
-    int n;
-    cin >> n;
-    int c = 0;
-    string a;
-    cin >> a;
-    for(int i = 0; i < a.length(); ++i)f[a[i]-'a']++;
-    if(n == 1){
-        cout << "Yes";
-        return 0;
-    }
-    for(int i = 0; i < 26; ++i){
-        if(f[i] == 0)continue;
-        if(f[i] > 1){
-            cout << "Yes";
-            return 0;
+    freopen("A-large.in","r",stdin);
+    freopen("output.out","w",stdout);
+    int t;
+    cin >> t;
+    for(int p = 1; p <= t; ++p){
+
+        ll n,k;
+        cin >> n >> k;
+        ll *arr = new ll[n];
+        for(int i = 0; i < n; ++i){
+            cin >> arr[i];
         }
+        sort(arr,arr+n);
+        ll ans = 0;
+        ll d = 0;
+        for(int i = 0; i < n; ++i){
+            if(arr[i] > d){
+                ans++;
+                if(ans%k == 0)d++;
+            }
+        }
+        cout << "Case #" << p << ": "<< ans << "\n";
     }
-    cout << "No";
     return 0;
 }

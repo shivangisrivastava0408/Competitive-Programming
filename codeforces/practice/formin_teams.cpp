@@ -36,27 +36,61 @@
 #define RIT reverse_iterator
 #define FAST ios_base::sync_with_stdio(false);cin.tie();cout.tie();
 #define FILE_READ freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
-#define MAXN 25
+#define MAXN 110
 using namespace std;
-int main(){
-    int f[26] = {0};
-    int n;
-    cin >> n;
-    int c = 0;
-    string a;
-    cin >> a;
-    for(int i = 0; i < a.length(); ++i)f[a[i]-'a']++;
-    if(n == 1){
-        cout << "Yes";
-        return 0;
-    }
-    for(int i = 0; i < 26; ++i){
-        if(f[i] == 0)continue;
-        if(f[i] > 1){
-            cout << "Yes";
-            return 0;
+int n,m;
+V<int> g[MAXN];
+
+bool comp(int a, int b){
+    if(g[a].size() <= g[b].size())return true;
+    return false;
+}
+
+bool isEnemy(vector<int> v, int a){
+    for(int i = 0; i < v.size(); ++i){
+        for(int j = 0; j < g[v[i]].size(); ++j){
+            if(g[v[i]][j] == 0)return true;
         }
     }
-    cout << "No";
+    return false;
+}
+
+int main(){
+    cin >> n >> m;  
+    V<int> teamA, teamB;
+    int *arr = new int[n];
+    for(int i = 0; i < n; ++i)arr[i]=i;
+    // loop(i,0,n)cout << arr[i] << " ";
+    // cout << endl;
+    loop(i,0,m){
+        int a,b;
+        cin >> a >> b;
+        a--;b--;
+        g[a].pb(b);
+        g[b].pb(a);
+    }
+    sort(arr,arr+n,comp);
+    int j = 1;
+    int ans =0;
+    for(int i = 0; i < n; ++i){
+        if(!isEnemy(teamA,arr[i])){
+            teamA.pb(arr[i]);
+            ++j;
+            continue;
+        }
+        else if(!isEnemy(teamB,arr[i])){
+            teamB.pb(arr[i]);
+            ++j;
+            continue;
+        }else{
+            ans++;
+        }
+    }
+    // for(int i = 0; i < teamA.size(); ++i)cout << teamA[i] << " ";
+    // cout << endl;
+    // for(int i = 0; i < teamB.size(); ++i)cout << teamB[i] << " ";
+    // cout << endl;
+    if((n-ans)%2 == 1)ans++;
+    cout << ans;
     return 0;
 }
