@@ -66,6 +66,17 @@ ll readInt () {
  
 }
 int main(){
-
+    freopen("output.txt","r",stdin);
+    string a;
+    cin >> a;
+    if(a.size() == 0){
+        cout << "No String generated error";
+        return 0;
+    }
+    int last = a[1];
+    int slast = a[0];
+    int arr[2] = {0};
+    arr[a[0]-'0']++;
+    for(int i = 1; i < )
     return 0;
 }

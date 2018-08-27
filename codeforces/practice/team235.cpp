@@ -66,6 +66,31 @@ ll readInt () {
  
 }
 int main(){
-
+    FILE_READ
+    int n,m;
+    cin >> m >> n;
+    if((2*m + 2 < n) || (m-n > 1)){
+        cout << -1;
+        return 0;
+    }
+    if(m > n){
+        while(n && m){
+            if(n){cout << "1";n--;}
+            if(m){cout << "0";m--;}
+        }
+        if(n)cout << "1";
+        return 0;
+    }
+    while(n && m && n>m){
+        if(n){cout << "1";n--;}
+        if(n){cout << "1";n--;}
+        if(m){cout << "0";m--;}
+    }
+    while(n && m){
+        if(n){cout << "1";n--;}
+        if(m){cout << "0";m--;}
+    }
+    if(n){cout << "1";n--;}
+    if(n){cout << "1";n--;}
     return 0;
 }

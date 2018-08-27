@@ -41,7 +41,7 @@ using namespace std;
 
 ll readInt () {
 	bool minus = false;
-	int result = 0;
+	ll result = 0;
 	char ch;
 	ch = getchar();
  
@@ -66,6 +66,9 @@ ll readInt () {
  
 }
 int main(){
-
+    int n,h;
+    n = readInt();
+    h = readInt();
+    
     return 0;
 }

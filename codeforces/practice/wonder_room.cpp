@@ -39,33 +39,30 @@
 #define MAXN 25
 using namespace std;
 
-ll readInt () {
-	bool minus = false;
-	int result = 0;
-	char ch;
-	ch = getchar();
- 
-	while (true) {
-		if (ch == '-') break;
-		if (ch >= '0' && ch <= '9') break;
-		ch = getchar();
-	}
- 
-	if (ch == '-') minus = true; else result = ch-'0';
- 
-	while (true) {
-		ch = getchar();
-		if (ch < '0' || ch > '9') break;
-		result = result*10 + (ch - '0');
-	}
- 
-	if (minus)
-		return -result;
-	else
-		return result;
- 
-}
-int main(){
 
+int main(){
+    ll n,a,b;
+    cin >> n >> a >> b;
+    // cout << n << a << b << endl;
+    if(a*b >= 6*n){
+        cout << a*b << endl << a << " " << b;
+        return 0;
+    }
+    bool f = 0;
+    if(a > b){swap(a,b);f=1;}
+    ll SQ = 1e18, a1,b1,tmp;
+    for(ll i = a; (i*i) <= (6*n); ++i){
+        // cout << "EJJE\n";
+        tmp = 6*n/i;
+        if(tmp*i < 6*n)tmp++;
+        if(tmp < b)continue;
+        if(tmp * i < SQ ){
+            SQ = tmp*i;
+            a1 = i;
+            b1 = tmp;
+        }
+    }
+    if(f)swap(a1,b1);
+    cout << a1*b1 << endl << a1 << " " << b1; 
     return 0;
 }

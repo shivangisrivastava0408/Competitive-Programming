@@ -51,12 +51,28 @@ void solve(){
     V<ll> v;
     cin >> n >> z1 >> z2;
     ll *arr = new ll[n];
-    loop(i,0,n){cin >> arr[i];m[arr[i]]++;if(arr[i])m[-1*arr[i]]++;v.pb(abs(arr[i]));}
-    sort(v.begin(),v.end());
-    
-    ll S = 0;
-    
-    
+    loop(i,0,n){cin >> arr[i];m[arr[i]]++;}
+    for(int i = 0; i < n; ++i){
+        if(arr[i] == z1 || arr[i] == z2 || arr[i] == -1*z1 || arr[i] == -1*z2){
+            cout << "1\n";
+            return;
+        }
+    }
+    if(z1 == 0 || z2 == 0){
+        cout << "2\n";
+        return 0;
+    }
+    for(int i = 0; i < n; ++i){
+        auto a = m.find(z1-arr[i]);
+        auto b = m.find(z1+arr[i]);
+        auto c = m.find(z2-arr[i]);
+        auto d = m.find(z2+arr[i]);
+        if(a!=m.end() || b!=m.end() || c!=m.end() || d!=m.end()){
+            cout << "2\n";
+            return;
+        }
+    }
+    cout << "0\n";    
 }
 
 int main(){

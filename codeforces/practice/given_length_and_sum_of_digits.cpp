@@ -42,11 +42,11 @@ int main(){
         cout << "-1 -1";
         return 0;
     }
-    if(m == 1 && s == 1){
-        cout << "1 1";
+    if(s == 1){
+        cout << m << " " << m;
         return 0;
     }
-    if(m == 1 && s != 0){
+    if(m == 1 && m != s){
         cout << "1";
         for(int i = 1; i < s; ++i)cout << "0";
         cout << " ";
@@ -54,15 +54,15 @@ int main(){
         for(int i = 1; i < s; ++i)cout << "0";
         return 0;
     }
-    if(m == 2){
-        cout << "1";
-        for(int i = 2; i < s; ++i)cout << "0";
-        cout << "1 ";
-        cout << "1";
-        for(int i = 2; i < s; ++i)cout << "0";
-        cout << "1";
-        return 0;
-    }
+    // if(m == 2){
+    //     cout << "1";
+    //     for(int i = 2; i < s; ++i)cout << "0";
+    //     cout << "1 ";
+    //     cout << "1";
+    //     for(int i = 2; i < s; ++i)cout << "0";
+    //     cout << "1";
+    //     return 0;
+    // }
     if(s*9 == m){
         for(int i = 0; i < s; ++i)cout << "9";
         cout << " ";

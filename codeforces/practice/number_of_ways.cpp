@@ -38,7 +38,6 @@
 #define FILE_READ freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define MAXN 25
 using namespace std;
-
 ll readInt () {
 	bool minus = false;
 	int result = 0;
@@ -66,6 +65,38 @@ ll readInt () {
  
 }
 int main(){
-
+    int n;
+    // cin >> n;
+    n = readInt();
+    ll sum = 0;
+    ll *arr = new ll[n];
+    for(int i = 0; i < n; ++i){
+        // cin >> arr[i];
+        arr[i] = readInt();
+        sum+=arr[i];
+    }
+    if(sum%3 != 0){
+        cout << 0;
+        return 0;
+    }
+    ll s = 0;
+    int *cnt = new int[n];
+    for(int i = n-1; i >= 0; --i){
+        s+=arr[i];
+        if(s == sum/3)cnt[i]=1;
+        else cnt[i] = 0;
+    }
+    for(int i = n-2; i >= 0; --i)cnt[i]+=cnt[i+1];
+    s = 0;
+    ll ans = 0;
+    // for(int i = 0 ; i < n; ++i)cout << cnt[i]  << " ";
+    // cout << endl;
+    for(int i = 0; i+2 < n; ++i){
+        s+=arr[i];
+        if(s == sum/3){
+            ans+=cnt[i+2];
+        }
+    }
+    cout << ans;
     return 0;
 }

@@ -38,34 +38,15 @@
 #define FILE_READ freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define MAXN 25
 using namespace std;
-
-ll readInt () {
-	bool minus = false;
-	int result = 0;
-	char ch;
-	ch = getchar();
- 
-	while (true) {
-		if (ch == '-') break;
-		if (ch >= '0' && ch <= '9') break;
-		ch = getchar();
-	}
- 
-	if (ch == '-') minus = true; else result = ch-'0';
- 
-	while (true) {
-		ch = getchar();
-		if (ch < '0' || ch > '9') break;
-		result = result*10 + (ch - '0');
-	}
- 
-	if (minus)
-		return -result;
-	else
-		return result;
- 
-}
 int main(){
-
+    int n,m,a,b;
+    cin >> n >> m >> a >> b;
+    if(a*m <= b){
+        cout << a*n;
+        return 0;
+    }
+    int cost1 = (n%m)*a + (n/m)*b;
+    int cost2 = ((n%m)?(n/m + 1):(n/m))*b;
+    cout << min(cost1,cost2);
     return 0;
 }
