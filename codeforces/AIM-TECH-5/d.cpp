@@ -66,6 +66,39 @@ ll readInt () {
  
 }
 int main(){
-
+	unordered_map<ll,int> m;
+	unordered_map<ll,int> m1;
+	int n;
+	int kind = 1;
+	cin >> n;
+	priority_queue<ll,V<ll>, greater<ll> > sell;
+	priority_queue<ll,V<ll> > buy;
+	for(int i = 0; i < n; ++i){
+		string a;
+		cin >> a;
+		ll b = readInt();
+		m[b] = 0;
+		m1[b] = 0;
+		if(a.length() == 3){
+			if(sell.size() == 0){m[b]++;sell.push(b);}
+			else{
+				if(sell.top() > b){m[b]++;sell.push(b);}
+			}
+			if(buy.size() == 0){m[b]++;buy.push(b);}
+			else{
+				if(buy.top() < b){m[b]++;buy.push(b);}
+			}
+		}else{
+			
+		}
+		// cout << buy.size() << " " << sell.size() << "\n";
+	}
+	if(!kind)return 0;
+	ll ans = 1;
+	for(auto it: m){
+		// cout << it.second << " ";
+		ans = (ans*(it.second))%MOD;
+	}
+	cout << ans;
     return 0;
 }

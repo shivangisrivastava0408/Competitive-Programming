@@ -39,7 +39,7 @@
 #define MAXN 25
 using namespace std;
 
-ll abs(ll a){
+ll ab(ll a){
     if(a < 0)a*=-1;
     return a;
 }
@@ -47,32 +47,43 @@ ll abs(ll a){
 void solve(){
     int n;
     ll z1,z2;
-    unordered_map<ll,int> m;
-    V<ll> v;
     cin >> n >> z1 >> z2;
     ll *arr = new ll[n];
-    loop(i,0,n){cin >> arr[i];m[arr[i]]++;}
+    loop(i,0,n){ll a; cin >> a;arr[i]=ab(a);}
     for(int i = 0; i < n; ++i){
-        if(arr[i] == z1 || arr[i] == z2 || arr[i] == -1*z1 || arr[i] == -1*z2){
+        if(arr[i] == ab(z1) || arr[i] == ab(z2)){
             cout << "1\n";
             return;
         }
     }
-    if(z1 == 0 || z2 == 0){
-        cout << "2\n";
-        return 0;
-    }
+    // if(z1 == 0 || z2 == 0){
+    //     cout << "2\n";
+    //     return 0;
+    // }
+
+    int flag;
     for(int i = 0; i < n; ++i){
-        auto a = m.find(z1-arr[i]);
-        auto b = m.find(z1+arr[i]);
-        auto c = m.find(z2-arr[i]);
-        auto d = m.find(z2+arr[i]);
-        if(a!=m.end() || b!=m.end() || c!=m.end() || d!=m.end()){
-            cout << "2\n";
-            return;
+        flag = 0;
+        ll a = arr[i];
+        for(int j = 0; j < n; ++j){
+            if((a-arr[j] == z1) || (a+arr[j] == z1) || (a-arr[j] == z2) || (a+arr[j] == z2)){
+                flag = 1;
+                break;
+            }
         }
+        if(!flag)break;
+        flag = 0;
+        a = -arr[i];
+        for(int j = 0; j < n; ++j){
+            if((a-arr[j] == z1) || (a+arr[j] == z1) || (a-arr[j] == z2) || (a+arr[j] == z2)){
+                flag = 1;
+                break;
+            }
+        }
+        if(!flag)break;
     }
-    cout << "0\n";    
+    if(flag)cout << "2\n";
+    else cout << "0\n";    
 }
 
 int main(){

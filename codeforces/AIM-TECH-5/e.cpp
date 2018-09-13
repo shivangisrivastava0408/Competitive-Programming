@@ -66,6 +66,13 @@ ll readInt () {
  
 }
 int main(){
-
+	int n;
+	n = readInt();
+	ll *b = new ll[n];
+	ll *a = new ll[n];
+	loop(i,0,n){
+		b[i] = readInt();
+	}
+	
     return 0;
 }

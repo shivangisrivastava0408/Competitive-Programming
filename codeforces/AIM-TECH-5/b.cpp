@@ -66,6 +66,20 @@ ll readInt () {
  
 }
 int main(){
-
+	int n,m;
+	n = readInt();
+	m = readInt();
+	string a = "";
+	string b = "";
+	int sum = 0;
+	while(sum < n){
+		sum+=9;
+		a+="9";
+	}
+	b = a;
+	for(int i = 0; i+1 < a.length(); ++i)b+="0";
+	b+="1";
+	cout << a << endl << b;
+	// cout << endl << a.length() << endl << b.length();
     return 0;
 }

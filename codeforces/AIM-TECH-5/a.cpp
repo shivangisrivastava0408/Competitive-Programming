@@ -66,6 +66,26 @@ ll readInt () {
  
 }
 int main(){
-
+    // freopen("input.txt","r",stdin);
+    int n,m;
+    cin >> n >> m;
+    int minN=n,maxN=-1,minC=m,maxC=-1;
+    string a;
+    for(int i = 0; i < n; ++i){
+        cin >> a;
+        for(int j = 0; j < m; ++j){
+            if(a[j] == 'B'){
+                minC = min(minC,j);
+                maxC = max(maxC,j);
+                minN = min(minN,i);
+                maxN = max(maxN,i);
+            }
+        }
+    }
+    minN++;
+    minC++;
+    maxN++;
+    maxC++;
+    cout << (maxN+minN)/2 << " " << (maxC+minC)/2;
     return 0;
 }
