@@ -30,24 +30,22 @@ Method:
 
 3. writeArray <br>
    &nbsp;&nbsp;&nbsp;
-   **Usage**: Array writes the passed on array to file, which can be pointed out or by default saved as input.txt in the same path as test.py script <br>
+   **Usage**: Writes the passed on array to file, which can be pointed out or by default saved as input.txt in the same path as test.py script <br>
    &nbsp;&nbsp;&nbsp;
    **Parameters**:<br>
     &nbsp;&nbsp;&nbsp; 
-    A. *array_length*: Defines the length of that should be returned<br>
+    A. *array*: Defines the array that has to be written to the file <br>
     &nbsp;&nbsp;&nbsp; 
-    B. *element_lower_bound*: Defines the minimum value any element in the returned array can have<br>
+    B. *file* (*optional*): Defines the file that is to be written. If not passed, it assumed to be input.txt<br>
     &nbsp;&nbsp;&nbsp; 
-    C. *element_upper_bound*: Defines the maximum value any element in the returned array can have<br>
 
 4. writeNumber <br>
    &nbsp;&nbsp;&nbsp;
-   **Usage**: writeNumber writes the passed on array to file, which can be pointed out or by default saved as input.txt in the same path as test.py script<br>
+   **Usage**: Writes the passed on number to file, which can be pointed out or by default saved as input.txt in the same path as test.py script <br>
    &nbsp;&nbsp;&nbsp;
    **Parameters**:<br>
     &nbsp;&nbsp;&nbsp; 
-    A. Number: Passed on array that was hard  to be <br>
+    A. *array*: Defines the number that has to be written to the file <br>
     &nbsp;&nbsp;&nbsp; 
-    B. *element_lower_bound*: Defines the minimum value any element in the returned array can have<br>
+    B. *file* (*optional*): Defines the file that is to be written. If not passed, it assumed to be input.txt<br>
     &nbsp;&nbsp;&nbsp; 
-    C. *element_upper_bound*: Defines the maximum value any element in the returned array can have<br>
