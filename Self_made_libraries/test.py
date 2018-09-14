@@ -38,9 +38,3 @@ i = 0
 while i < 10:
     digits.append(str(i))
     i = i + 1
-t = getNumber(1,10)
-writeNumber(t,fopen)
-for i in range(t):
-    n = getNumber(1,100000)
-    writeNumber(n)
-    writeArray(getArray(n,1,1000000),fopen)
